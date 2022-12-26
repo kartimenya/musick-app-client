@@ -3,4 +3,10 @@
   align-items: center;
   padding: 10px;
   margin-bottom: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+  background: #fff;
+}
+.track:hover {
+  background: rgb(231, 220, 220);
 }

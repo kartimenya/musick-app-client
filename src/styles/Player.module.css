@@ -1,11 +1,30 @@
-.player {
-  height: 40px;
+.playerWrapp {
   width: 100%;
   position: fixed;
   bottom: 0;
   left: 0;
+  background-color: lightgray;
+}
+.playerTimer {
+  padding: 0 1px;
+  position: absolute;
+  top: -15px;
+  left: 0;
+  width: 100%;
+}
+.playerVolume {
   display: flex;
   align-items: center;
+  gap: 10px;
+}
+.playerVolumeBox {
+  margin-top: 7px;
+  width: 100px;
+}
+.player {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   padding: 0 10px;
-  background-color: lightgray;
+  height: 55px;
 }

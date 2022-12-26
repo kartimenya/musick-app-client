@@ -41,13 +41,13 @@ export const playerSlice = createSlice({
       state.volume = action.payload;
     },
   },
-  extraReducers: {
-    [HYDRATE]: (state, action) => {
+  extraReducers: (builder) => {
+    builder.addCase(HYDRATE, (state, action: any) => {
       return {
         ...state,
         ...action.payload.auth,
       };
-    },
+    });
   },
 });
 

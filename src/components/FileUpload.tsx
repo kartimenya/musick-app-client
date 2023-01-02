@@ -1,7 +1,7 @@
 import React, { ChangeEvent, FC, useRef } from 'react';
 
 interface IFileUpload {
-  setFile: (file: File) => void;
+  setFile: (file: Blob) => void;
   accept: string;
   children: React.ReactNode;
 }

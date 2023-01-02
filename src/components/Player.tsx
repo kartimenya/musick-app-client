@@ -22,16 +22,6 @@ const Player = () => {
     (state) => state.player,
   );
   const dispatch = useAppDispatch();
-  const track = {
-    _id: '1',
-    artist: 'Artist-1',
-    audio: 'http://localhost:5000/audio/0bb070b6-9113-44bd-b4f2-c362b9e88a13.mp3',
-    name: 'name-1',
-    listens: 1,
-    text: 'text-1',
-    picture: 'ds',
-    coments: [],
-  };
 
   function formatDuration(value: number) {
     const minute = Math.floor(value / 60);
@@ -48,7 +38,7 @@ const Player = () => {
   useEffect(() => {
     if (activeTrack) {
       if (activeTrack?._id !== prevTrack?._id && pause === false) {
-        audio.src = activeTrack?.audio;
+        audio.src = `http://localhost:5000/${activeTrack?.audio}`;
         audio.onloadedmetadata = () => {
           dispatch(setDuration(Math.ceil(audio.duration)));
         };
@@ -97,8 +87,8 @@ const Player = () => {
             {formatDuration(currentTime)} / {formatDuration(duration)}
           </p>
           <Grid container direction="column" style={{ width: 200, margin: '0 20px' }}>
-            <div>{track.name}</div>
-            <div style={{ fontSize: 12, color: 'gray' }}>{track.artist}</div>
+            <div>{activeTrack?.name}</div>
+            <div style={{ fontSize: 12, color: 'gray' }}>{activeTrack?.artist}</div>
           </Grid>
         </Grid>
 

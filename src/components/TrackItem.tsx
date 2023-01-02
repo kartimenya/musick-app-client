@@ -35,8 +35,7 @@ const TrackItem: FC<ITrackItem> = ({ track, active = false }) => {
   return (
     <Card className={styles.track} onClick={() => router.push(`/tracks/${track._id}`)}>
       <IconButton onClick={play}>{active ? <Pause /> : <PlayArrow />}</IconButton>
-      <img width={30} height={30} src={track.picture} />
-      {track.name}
+      <img width={30} height={30} src={`http://localhost:5000/${track.picture}`} />
       <Grid container direction="column" style={{ width: 200, margin: '0 20px' }}>
         <div>{track.name}</div>
         <div style={{ fontSize: 12, color: 'gray' }}>{track.artist}</div>

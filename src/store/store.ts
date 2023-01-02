@@ -1,4 +1,5 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
+import { trackSlice } from './slices/track';
 import { playerSlice } from './slices/player';
 import { createWrapper } from 'next-redux-wrapper';
 
@@ -6,6 +7,7 @@ const makeStore = () =>
   configureStore({
     reducer: {
       [playerSlice.name]: playerSlice.reducer,
+      [trackSlice.name]: trackSlice.reducer,
     },
     devTools: true,
   });

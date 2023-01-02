@@ -45,7 +45,7 @@ export const playerSlice = createSlice({
     builder.addCase(HYDRATE, (state, action: any) => {
       return {
         ...state,
-        ...action.payload.auth,
+        ...action.payload.player,
       };
     });
   },

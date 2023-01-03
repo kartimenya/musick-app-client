@@ -1,7 +1,7 @@
 import { Delete, Pause, PlayArrow } from '@mui/icons-material';
 import { Card, Grid, IconButton } from '@mui/material';
 import { useRouter } from 'next/router';
-import React, { FC } from 'react';
+import React, { FC, MouseEvent } from 'react';
 import { useAppDispatch, useAppSelector } from '../hooks/reduxHooks';
 import { ITrack } from '../models/track';
 import { pauseTrack, playTrack, setActiveTrack } from '../store/slices/player';
@@ -15,9 +15,15 @@ interface ITrackItem {
 const TrackItem: FC<ITrackItem> = ({ track, active = false }) => {
   const router = useRouter();
   const dispatch = useAppDispatch();
-  const { pause, activeTrack } = useAppSelector((state) => state.player);
+  const { pause, activeTrack, currentTime, duration } = useAppSelector((state) => state.player);
 
-  const play = (e: any) => {
+  function formatDuration(value: number) {
+    const minute = Math.floor(value / 60);
+    const secondLeft = value - minute * 60;
+    return `${minute}:${secondLeft < 10 ? `0${secondLeft}` : secondLeft}`;
+  }
+
+  const play = (e: MouseEvent<HTMLElement>) => {
     e.stopPropagation();
     if (pause && activeTrack?._id !== track._id) {
       dispatch(setActiveTrack(track));
@@ -34,16 +40,24 @@ const TrackItem: FC<ITrackItem> = ({ track, active = false }) => {
 
   return (
     <Card className={styles.track} onClick={() => router.push(`/tracks/${track._id}`)}>
-      <IconButton onClick={play}>{active ? <Pause /> : <PlayArrow />}</IconButton>
-      <img width={30} height={30} src={`http://localhost:5000/${track.picture}`} />
-      <Grid container direction="column" style={{ width: 200, margin: '0 20px' }}>
-        <div>{track.name}</div>
-        <div style={{ fontSize: 12, color: 'gray' }}>{track.artist}</div>
+      <Grid container alignItems="center">
+        <IconButton onClick={play}>{active ? <Pause /> : <PlayArrow />}</IconButton>
+        <img width={30} height={30} src={`http://localhost:5000/${track.picture}`} />
+        <Grid container direction="column" style={{ width: 200, margin: '0 20px' }}>
+          <div>{track.name}</div>
+          <div style={{ fontSize: 12, color: 'gray' }}>{track.artist}</div>
+        </Grid>
       </Grid>
-      {active && <div>02:42 / 03:15</div>}
-      <IconButton onClick={(e) => e.stopPropagation()} style={{ marginLeft: 'auto' }}>
-        <Delete />
-      </IconButton>
+      <Grid container alignItems="center" justifyContent="flex-end">
+        {active && (
+          <div style={{}}>
+            {formatDuration(currentTime)} / {formatDuration(duration)}
+          </div>
+        )}
+        <IconButton onClick={(e) => e.stopPropagation()}>
+          <Delete />
+        </IconButton>
+      </Grid>
     </Card>
   );
 };

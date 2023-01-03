@@ -1,4 +1,4 @@
-import { Box, Button, Card, Grid, TextField } from '@mui/material';
+import { Box, Button, Grid, TextField } from '@mui/material';
 import axios from 'axios';
 import { useRouter } from 'next/router';
 import React, { FC, useState } from 'react';
@@ -44,7 +44,7 @@ const TrackScreen: FC<ITrackScreen> = ({ serverTrack }) => {
       </Grid>
       <h1>Текст трека</h1>
       <p>{track.text}</p>
-      <h1>Коментарии</h1>
+      <h1>Коментарии:</h1>
       <Grid container>
         <TextField {...username} label="Ваше имя" fullWidth />
         <TextField {...text} label="Коментарий" fullWidth multiline rows={3} />

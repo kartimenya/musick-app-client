@@ -14,10 +14,7 @@ import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
 import { useRouter } from 'next/router';
 
 const drawerWidth = 240;
@@ -55,7 +52,6 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 const menuItem = [
   { text: 'Главная', href: '/' },
   { text: 'Список треков', href: '/tracks' },
-  { text: 'Список альбомов', href: '/tracks' },
 ];
 
 export default function Navbar() {
@@ -85,7 +81,7 @@ export default function Navbar() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-            Persistent drawer
+            MusicApp
           </Typography>
         </Toolbar>
       </AppBar>
@@ -111,7 +107,6 @@ export default function Navbar() {
           {menuItem.map(({ text, href }, index) => (
             <ListItem key={text} disablePadding onClick={() => router.push(href)}>
               <ListItemButton>
-                <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
                 <ListItemText primary={text} />
               </ListItemButton>
             </ListItem>

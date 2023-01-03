@@ -13,14 +13,12 @@ const TrackList: FC<ITrackList> = ({ tracks }) => {
 
   return (
     <Grid container direction="column">
-      <Box p={2}>
-        {tracks.map((track) => {
-          if (activeTrack?._id === track._id) {
-            return <TrackItem key={track._id} track={track} active={!pause} />;
-          }
-          return <TrackItem key={track._id} track={track} />;
-        })}
-      </Box>
+      {tracks.map((track) => {
+        if (activeTrack?._id === track._id) {
+          return <TrackItem key={track._id} track={track} active={!pause} />;
+        }
+        return <TrackItem key={track._id} track={track} />;
+      })}
     </Grid>
   );
 };

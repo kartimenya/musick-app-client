@@ -9,17 +9,15 @@ const Tracks = () => {
   const { tracks } = useAppSelector((state) => state.track);
 
   return (
-    <Grid container justifyContent="center">
-      <Card style={{ width: '100%' }}>
-        <Box p={3}>
-          <Grid container justifyContent="space-between">
-            <h1>Список треков</h1>
-            <Button onClick={() => router.push('/tracks/create')}>Загрузить</Button>
-          </Grid>
-        </Box>
+    <Card style={{ width: '100%' }}>
+      <Box p={3}>
+        <Grid container justifyContent="space-between">
+          <h1>Список треков</h1>
+          <Button onClick={() => router.push('/tracks/create')}>Загрузить</Button>
+        </Grid>
         <TrackList tracks={tracks} />
-      </Card>
-    </Grid>
+      </Box>
+    </Card>
   );
 };
 

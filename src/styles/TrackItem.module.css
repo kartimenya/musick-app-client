@@ -1,11 +1,13 @@
 .track {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   padding: 10px;
-  margin-bottom: 20px;
+  margin: 10px 0;
   cursor: pointer;
   transition: 0.3s;
   background: #fff;
+  max-height: 67px;
 }
 .track:hover {
   background: rgb(231, 220, 220);

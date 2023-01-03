@@ -6,7 +6,6 @@ import { ITrack } from '../models/track';
 import {
   pauseTrack,
   playTrack,
-  setActiveTrack,
   setCurrentTime,
   setDuration,
   setVolume,

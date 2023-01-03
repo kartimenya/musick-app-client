@@ -1,6 +1,5 @@
 import { ITrack } from './../../models/track';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { HYDRATE } from 'next-redux-wrapper';
 
 export interface PlayerState {
   currentTime: number;
@@ -40,14 +39,6 @@ export const playerSlice = createSlice({
     setVolume(state, action: PayloadAction<number>) {
       state.volume = action.payload;
     },
-  },
-  extraReducers: (builder) => {
-    builder.addCase(HYDRATE, (state, action: any) => {
-      return {
-        ...state,
-        ...action.payload.player,
-      };
-    });
   },
 });
 

@@ -18,7 +18,7 @@ const Layout: FC<ILayout> = ({ children, title }) => {
       </Head>
       <Navbar />
       <Container>
-        <Box mt={12} paddingBottom={6}>
+        <Box mt={12} paddingBottom={10}>
           {children}
         </Box>
       </Container>

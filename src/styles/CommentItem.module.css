@@ -1,0 +1,11 @@
+.comment {
+  border: 1px solid #eceff5;
+}
+.username {
+  color: #222d34;
+  font-size: 14px;
+  font-weight: 600;
+}
+.text {
+  color: #808a90;
+}

@@ -1,6 +1,6 @@
 export interface IComent {
   _id: string;
-  userName: string;
+  username: string;
   text: string;
 }
 export interface ITrack {

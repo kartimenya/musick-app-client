@@ -1,9 +1,10 @@
-import { Button, Grid, TextField } from '@mui/material';
+import { Box, Button, Card, Grid, TextField } from '@mui/material';
 import axios from 'axios';
 import { useRouter } from 'next/router';
 import React, { FC, useState } from 'react';
 import { useInput } from '../../hooks/useInput';
 import { IComent, ITrack } from '../../models/track';
+import CommentItem from '../CommentItem';
 
 interface ITrackScreen {
   serverTrack: ITrack;
@@ -49,11 +50,11 @@ const TrackScreen: FC<ITrackScreen> = ({ serverTrack }) => {
         <TextField {...text} label="Коментарий" fullWidth multiline rows={3} />
         <Button onClick={addComment}>Отправить</Button>
       </Grid>
-      <div>
+      <Box pt={2}>
         {track.comments.map((comment) => (
-          <div>{comment.text}</div>
+          <CommentItem key={comment._id} text={comment.text} username={comment.username} />
         ))}
-      </div>
+      </Box>
     </div>
   );
 };

@@ -5,6 +5,7 @@ import React, { FC, MouseEvent } from 'react';
 import { useAppDispatch, useAppSelector } from '../hooks/reduxHooks';
 import { ITrack } from '../models/track';
 import { pauseTrack, playTrack, setActiveTrack } from '../store/slices/player';
+import { deleteTracks } from '../store/slices/track';
 import styles from '../styles/TrackItem.module.css';
 
 interface ITrackItem {
@@ -38,6 +39,11 @@ const TrackItem: FC<ITrackItem> = ({ track, active = false }) => {
     }
   };
 
+  const deleteClick = (e: MouseEvent<HTMLElement>) => {
+    e.stopPropagation();
+    dispatch(deleteTracks(track._id));
+  };
+
   return (
     <Card className={styles.track} onClick={() => router.push(`/tracks/${track._id}`)}>
       <Grid container alignItems="center">
@@ -54,7 +60,7 @@ const TrackItem: FC<ITrackItem> = ({ track, active = false }) => {
             {formatDuration(currentTime)} / {formatDuration(duration)}
           </div>
         )}
-        <IconButton onClick={(e) => e.stopPropagation()}>
+        <IconButton onClick={deleteClick}>
           <Delete />
         </IconButton>
       </Grid>

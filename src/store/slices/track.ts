@@ -9,6 +9,11 @@ export const fetchTracks = createAsyncThunk('track/fetch', async () => {
   return data;
 });
 
+export const deleteTracks = createAsyncThunk('track/delete', async (id: string) => {
+  const { data } = await axios.delete<string>(`http://localhost:5000/tracks/${id}`);
+  return data;
+});
+
 export interface TrackState {
   tracks: ITrack[];
   statuse: string;
@@ -33,6 +38,10 @@ export const trackSlice = createSlice({
     builder.addCase(fetchTracks.fulfilled, (state, action: PayloadAction<ITrack[]>) => {
       state.statuse = 'fulfilled';
       state.tracks = action.payload;
+    });
+
+    builder.addCase(deleteTracks.fulfilled, (state, action: PayloadAction<string>) => {
+      state.tracks = state.tracks.filter((track) => track._id !== action.payload);
     });
 
     builder.addCase(HYDRATE, (state, action: any) => {

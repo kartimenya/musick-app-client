@@ -18,7 +18,7 @@ const Create = () => {
   const next = () => {
     if (activeStep !== 2) {
       setActiveStep((prev) => prev + 1);
-    } else if (picture && audio) {
+    } else if (picture && audio && text.value && artist.value && name.value) {
       const formData = new FormData();
       formData.append('name', name.value);
       formData.append('artist', artist.value);
@@ -29,6 +29,8 @@ const Create = () => {
         .post('http://localhost:5000/tracks', formData)
         .then((resp) => router.push('/tracks'))
         .catch((e) => console.log(e));
+    } else {
+      alert('Все поля обязательны для заполнения');
     }
   };
 
@@ -48,6 +50,7 @@ const Create = () => {
         {activeStep === 1 && (
           <FileUpload setFile={setPicture} accept="image/*">
             <Button>Загрузить картинку</Button>
+            <img src="" alt="" />
           </FileUpload>
         )}
         {activeStep === 2 && (

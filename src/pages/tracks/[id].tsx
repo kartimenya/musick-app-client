@@ -19,10 +19,9 @@ const trackPage: NextPage<ItrackPage> = ({ serverTrack }) => {
 
 export default trackPage;
 
-export const getServerSideProps: GetServerSideProps<{ serverTrack: ITrack }> = async ({
-  params,
-}) => {
-  // const { data } = await axios.get<ITrack>('http://localhost:5000/tracks/' + params?.id);
+// не деплоит GetServerSideProps, только getStaticProps
+export const getStaticProps: GetServerSideProps<{ serverTrack: ITrack }> = async ({ params }) => {
+  const { data } = await axios.get<ITrack>('http://localhost:5000/tracks/' + params?.id);
   const track: ITrack = {
     _id: 'fd',
     artist: 'fd',

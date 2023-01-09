@@ -22,11 +22,20 @@ export default trackPage;
 export const getServerSideProps: GetServerSideProps<{ serverTrack: ITrack }> = async ({
   params,
 }) => {
-  const { data } = await axios.get<ITrack>('http://localhost:5000/tracks/' + params?.id);
-
+  // const { data } = await axios.get<ITrack>('http://localhost:5000/tracks/' + params?.id);
+  const track: ITrack = {
+    _id: 'fd',
+    artist: 'fd',
+    audio: 'fds',
+    comments: [],
+    listens: 1,
+    name: 'fd',
+    picture: 'fdf',
+    text: 'ds',
+  };
   return {
     props: {
-      serverTrack: data,
+      serverTrack: track,
     },
   };
 };

@@ -52,7 +52,7 @@ const Player = () => {
         audio.pause();
       }
     }
-  }, [activeTrack, pause]);
+  }, [activeTrack, pause, dispatch]);
 
   useEffect(() => {}, [activeTrack]);
 

@@ -15,11 +15,11 @@ const index: NextPage = () => {
 
 export default index;
 
-// export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps(
-//   (store) => async () => {
-//     await store.dispatch(fetchTracks());
-//     return {
-//       props: {},
-//     };
-//   },
-// );
+export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps(
+  (store) => async () => {
+    await store.dispatch(fetchTracks());
+    return {
+      props: {},
+    };
+  },
+);
